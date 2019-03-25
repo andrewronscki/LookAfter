@@ -1,0 +1,9 @@
+{ 
+    "_id": "_design/mylibrary", 
+    "language": "javascript", 
+    "views": { 
+        "books_by_isbn": { 
+            "map": "function (doc) { if(doc.ISBN) { emit (doc.ISBN, doc); } }"
+        } 
+    } 
+} 
