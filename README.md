@@ -15,4 +15,4 @@
 <h4>[] react-fontawesome</h4>
 <h2> Database </h2>
 <h3>Utilizado o CouchDB</h3>
-<h4><a href='http://couchdb.apache.org/'>http://couchdb.apache.org/</a></h4>
+<h4><a href='http://couchdb.apache.org/' target='_blank'>http://couchdb.apache.org/</a></h4>
