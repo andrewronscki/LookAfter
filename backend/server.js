@@ -1,6 +1,8 @@
 const express = require('express')
+const cors = require('cors')
 const bodyParser = require('body-parser')
 const app = express()
+app.use(cors())
 const nano = require('nano')('http://andre:123456@localhost:5984').use('products')
 
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -25,7 +27,7 @@ app.listen(3000, () => {
                 res.end( "Querying books failed. " + err + "\n" ) 
             } else { 
                 res.writeHead( 200, { "Content-Type": "text/plain" })
-                res.end( "Products queried. Response: " + JSON.stringify(body) + "\n" )
+                res.end(JSON.stringify(body.rows.map(product => product.value)))
             } 
         }) 
     })

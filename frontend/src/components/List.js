@@ -12,20 +12,19 @@ class List extends Component {
     this.saveModalDetails = this.saveModalDetails.bind(this)
     this.state = {
       requiredItem: 0,
-      brochure: [{
-        model: null,
-        description: null,
-        size: null,
-        amount: null
-      }]
+      brochure: []
     }
   }
 
+  componentDidMount = () => {
+    this.loadProducts()
+  }
+
   loadProducts = () => {
-    axios.get('/http://localhost:3000/get').then(function(res){
-      console.log(res.data)
-    })
-      
+    axios.get('http://localhost:3000/get')
+      .then(({data}) => this.setState({
+        brochure: data
+      }))      
   }
   replaceModalItem(index) {
     this.setState({
@@ -59,7 +58,7 @@ class List extends Component {
           <td>{item.size}</td>
           <td>{item.amount}</td>
           <td>
-            <button className="btn btn-primary" onClick={() => this.loadProducts(data)}><FontAwesome name='retweet' /></button> {" "}
+            <button className="btn btn-primary" onClick={() => this.loadProducts()}><FontAwesome name='retweet' /></button> {" "}
             <button className="btn btn-warning" data-toggle="modal" data-target="#editModal"
               onClick={() => this.replaceModalItem(index)}><FontAwesome name='edit' /></button> {" "}
             <button className="btn btn-danger" onClick={() => this.deleteItem(index)}><FontAwesome name='trash' /></button>
@@ -74,24 +73,28 @@ class List extends Component {
       <div>
         <table className="table table-striped">
             <thead>
+              <tr>
                 <th>Comprar</th>
                 <th>Modelo</th>
                 <th>Descrição</th>
                 <th>Tamanho</th>
                 <th>Quantidade</th>
                 <th>Editar/Deletar</th>
+              </tr>
             </thead>
           <tbody>
             {brochure}
           </tbody>
         </table>
-        <ModalEditProduct
-          model={modalData.model}
-          description={modalData.description}
-          size={modalData.size}
-          amount={modalData.amount}
-          saveModalDetails={this.saveModalDetails}
-        />
+        {modalData && 
+          <ModalEditProduct
+            model={modalData.model}
+            description={modalData.description}
+            size={modalData.size}
+            amount={modalData.amount}
+            saveModalDetails={this.saveModalDetails}
+          />
+        }
       </div>
     )
   }

@@ -13,16 +13,8 @@ class ModalAddProduct extends Component {
         }
     }
 
-    modelHandler(e) {
-        this.setState({ model: e.target.value })
-    }
-    
-    sizeHandler(e) {
-        this.setState({ size: e.target.value })
-    }
-
-    amountHandler(e) {
-        this.setState({ price: e.target.value })
+    handlerInput(e) {
+        this.setState({ [e.target.name]: e.target.value })
     }
 
     handleSave() {
@@ -42,9 +34,10 @@ class ModalAddProduct extends Component {
                             </button>
                         </div>
                         <div className="modal-body">
-                            <p><span className="modal-lable">Modelo: </span><input value={this.state.model} onChange={(e) => this.modelHandler(e)} /></p>
-                            <p><span className="modal-lable">Tamanho: </span><input value={this.state.size} onChange={(e) => this.sizeHandler(e)} /></p>
-                            <p><span className="modal-lable">Quantidade: </span><input  type='number' value={this.state.price} onChange={(e) => this.amountHandler(e)} /></p>
+                            <p><span className="modal-lable">Modelo: </span><input name='model' value={this.state.model} onChange={(e) => this.handlerInput(e)} /></p>
+                            <p><span className="modal-lable">Descrição: </span><input name='description' value={this.state.description} onChange={(e) => this.handlerInput(e)} /></p>
+                            <p><span className="modal-lable">Tamanho: </span><input name='size' value={this.state.size} onChange={(e) => this.handlerInput(e)} /></p>
+                            <p><span className="modal-lable">Quantidade: </span><input  name='amount' type='number' value={this.state.price} onChange={(e) => this.handlerInput(e)} /></p>
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Fechar</button>
