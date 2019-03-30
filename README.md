@@ -7,7 +7,7 @@
 <h4>[] cors</h4>
 <h4>[] nano</h4>
 <h2>Frontend</h2>
-<h3>Developed in React, used the following packages:</h3>
+<h3>Developed in React, the following packages are used::</h3>
 <h4>[] axios</h4>
 <h4>[] bootstrap</h4>
 <h4>[] jquery</h4>
