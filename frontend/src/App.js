@@ -18,7 +18,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-      <div className="App">
+      <div className='App'>
         <nav className='navbar navbar-expand-sm bg-dark navbar-dark'>
           <div className='container'>
             <div className='navbar-header'>
@@ -27,9 +27,9 @@ class App extends Component {
               </a>
             </div>
             <ul className='nav navbar-nav'>
-              <li className='nav-item'><Link to='/' className="nav-link">Home</Link></li>
-              <li className='nav-item'><Link to='/produtos' className="nav-link">Produtos</Link></li>
-              <li className='nav-item'><Link to='/sobre' className="nav-link">Sobre</Link></li>
+              <li className='nav-item'><Link to='/' className='nav-link'>Home</Link></li>
+              <li className='nav-item'><Link to='/produtos' className='nav-link'>Produtos</Link></li>
+              <li className='nav-item'><Link to='/sobre' className='nav-link'>Sobre</Link></li>
             </ul>
           </div>        
         </nav>

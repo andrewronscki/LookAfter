@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
+import axios from 'axios'
+import swal from 'sweetalert'
 
 class ModalAddProduct extends Component {
     constructor(props) {
-        super(props);
-        this.handleSave = this.handleSave.bind(this);
+        super(props)
         this.state = {
             model: '',
             description: '',
             size: '',
-            amount: '',
-            bought: ''
+            amount: ''
         }
     }
 
@@ -17,10 +17,20 @@ class ModalAddProduct extends Component {
         this.setState({ [e.target.name]: e.target.value })
     }
 
-    handleSave() {
-        const item = this.state;
-        this.props.saveModalDetails(item)
-    }
+    handleSave = async () => {
+        const newProduct = {
+            model: this.state.model, 
+            description: this.state.description, 
+            size: this.state.size, 
+            amount: parseInt(this.state.amount), 
+            bought: 0, 
+            disabled: false
+        }       
+              
+        await axios.post('http://localhost:3000/add', newProduct)
+            .then( res => swal('Isso aí!', 'Produto adicionado com sucesso.', 'success'))
+            .catch(swal('Erro!', 'Não foi possível adicionar produto.', 'error' ))
+    }    
 
     render() {
         return (

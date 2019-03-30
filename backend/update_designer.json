@@ -1,9 +1,0 @@
-{
-    "_id": "_design/yourapp",
-    "updates": {
-      "foo": "function(doc, req) {
-                doc.groups.push(req.query.bar);
-                return [doc, 'done'];
-            }"
-    }
-}

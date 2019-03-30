@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import axios from 'axios'
+import swal from 'sweetalert'
 
 class ModalEditProduct extends Component {
     constructor(props) {
@@ -9,6 +11,7 @@ class ModalEditProduct extends Component {
             description: '',
             size: '',
             amount: '',
+            _id: ''
         }
     }
 
@@ -17,51 +20,52 @@ class ModalEditProduct extends Component {
             model: nextProps.model,
             description: nextProps.description,
             size: nextProps.size,
-            amount: nextProps.amount
+            amount: nextProps.amount,
+            _id: nextProps._id
         })
     }
 
-    modelHandler(e) {
-        this.setState({ model: e.target.value })
+    handlerInput(e) {
+        this.setState({ [e.target.name]: e.target.value })
     }
 
-    descriptionHandler(e) {
-        this.setState({ description: e.target.value })
-    }
-    
-    sizeHandler(e) {
-        this.setState({ size: e.target.value })
-    }
-
-    amountHandler(e) {
-        this.setState({ amount: e.target.value })
-    }
-
-    handleSave() {
-        const item = this.state;
+    handleSave = async () => {
+        const updateProduct = {
+            model: this.state.model,
+            description: this.state.description,
+            size: this.state.size,
+            amount: this.state.amount,
+            _id: this.state._id 
+        }
+        await axios.put('http://localhost:3000/update', updateProduct)
+        .then(res => swal('Isso aí','Produto atualizado com sucesso!','success'))
+        .catch(swal('Erro!', 'Não foi possível atualizar produto.', 'error' ))
+        const item = this.state
         this.props.saveModalDetails(item)
-    }
+          
+    }   
+    
 
     render() {
         return (
-            <div className="modal fade" id="editModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div className="modal-dialog" role="document">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Editar produto</h5>
-                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
+            <div className='modal fade' id='editModal' tabIndex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                <div className='modal-dialog' role='document'>
+                    <div className='modal-content'>
+                        <div className='modal-header'>
+                            <h5 className='modal-title' id='exampleModalLabel'>Editar produto</h5>
+                            <button type='button' className='close' data-dismiss='modal' aria-label='Close'>
+                                <span aria-hidden='true'>&times;</span>
                             </button>
                         </div>
-                        <div className="modal-body">
-                            <p><span className="modal-lable">Modelo: </span><input value={this.state.model} onChange={(e) => this.modelHandler(e)} /></p>
-                            <p><span className="modal-lable">Descrição: </span><input value={this.state.description} onChange={(e) => this.descriptionHandler(e)} /></p>
-                            <p><span className="modal-lable">Tamanho: </span><input value={this.state.size} onChange={(e) => this.sizeHandler(e)} /></p>
-                            <p><span className="modal-lable">Quantidade: </span><input value={this.state.amount} onChange={(e) => this.amountHandler(e)} /></p>
+                        <div className='modal-body'>
+                            <p><span className='modal-lable'>Modelo: </span><input name='model' value={this.state.model} onChange={(e) => this.handlerInput(e)} /></p>
+                            <p><span className='modal-lable'>Descrição: </span><input name='description' value={this.state.description} onChange={(e) => this.handlerInput(e)} /></p>
+                            <p><span className='modal-lable'>Tamanho: </span><input name='size' value={this.state.size} onChange={(e) => this.handlerInput(e)} /></p>
+                            <p><span className='modal-lable'>Quantidade: </span><input name='amount' type='number' value={this.state.amount} onChange={(e) => this.handlerInput(e)} /></p>
                         </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                            <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={() => { this.handleSave() }}>Salvar alterações</button>
+                        <div className='modal-footer'>
+                            <button type='button' className='btn btn-secondary' data-dismiss='modal'>Fechar</button>
+                            <button type='button' className='btn btn-primary' data-dismiss='modal' onClick={() => { this.handleSave() }}>Salvar alterações</button>
                         </div>
                     </div>
                 </div>

@@ -39,8 +39,8 @@ class AddProduct extends Component {
         const brochure = this.state.brochure.map((item, index) => {
             return (
                 <div key={index}>
-                    <button className="btn btn-primary" data-toggle="modal" data-target="#addModal"
-                    onClick={() => this.replaceModalItem(index)}><FontAwesome name='plus' /> Adicionar produto</button> {" "}
+                    <button className='btn btn-primary' data-toggle='modal' data-target='#addModal'
+                    onClick={() => this.replaceModalItem(index)}><FontAwesome name='plus' /> Adicionar produto</button>
                 </div>
             )
           })
