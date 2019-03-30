@@ -66,11 +66,6 @@ class List extends Component {
       .catch(swal('Erro!', 'Não foi possível comprar produto.', 'error' ))
   }
 
-  updateProduct = async (index) => {
-    let state = this.state.brochure
-    state.splice(index)
-  }
-
   render() {    
     const brochure = this.state.brochure.map((item, index) => {
       return (
