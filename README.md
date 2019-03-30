@@ -13,6 +13,7 @@
 <h4>[] jquery</h4>
 <h4>[] popper.js</h4>
 <h4>[] react-fontawesome</h4>
+<h4>[] sweetalert</h4>
 <h2> Database </h2>
 <h3>Used CouchDB</h3>
 <h4><a href='http://couchdb.apache.org/' target='_blank'>http://couchdb.apache.org/</a></h4>
