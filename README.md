@@ -34,5 +34,5 @@
 <h2> Database </h2>
 <h3>Used CouchDB</h3>
 <h4><a href='http://couchdb.apache.org/' target='_blank'>http://couchdb.apache.org/</a></h4>
-
-
+<h2>Next steps of the project</h2>
+<h3>Use NGINX</h3>
