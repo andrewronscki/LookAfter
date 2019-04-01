@@ -65,9 +65,7 @@ class List extends Component {
     await axios.put('http://localhost:3000/delete', deleteProduct)
       .then(res => {
         Swal.fire('Isso aí!', 'Produto deletado com sucesso.', 'success')
-        let tempBrochure = this.state.brochure
-        tempBrochure.splice(index, 1)
-        this.setState({ brochure: tempBrochure })
+        this.loadProducts()
       })
       .catch(err => Swal.fire('Erro!', 'Não foi possível deletar produto.', 'error' ))
   }
@@ -79,7 +77,10 @@ class List extends Component {
       _id: this.state.brochure[item]._id
     }
     await axios.put('http://localhost:3000/buy', buyProduct)
-      .then(res => Swal.fire('Isso aí!', 'Produto comprado com sucesso.', 'success'))
+      .then(res => {
+          Swal.fire('Isso aí!', 'Produto comprado com sucesso.', 'success')
+          this.loadProducts()
+        })
       .catch(err => Swal.fire('Erro!', 'Não foi possível comprar produto.', 'error' ))
   }
 

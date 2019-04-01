@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Swal from 'sweetalert2'
+import List from './List'
 
 class ModalAddProduct extends Component {
     constructor(props) {
