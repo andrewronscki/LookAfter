@@ -34,5 +34,7 @@
 <h2> Database </h2>
 <h3>Used CouchDB</h3>
 <h4><a href='http://couchdb.apache.org/' target='_blank'>http://couchdb.apache.org/</a></h4>
+<h3>To make the products get a document was created according to the image.</h3>
+<image src="https://drive.google.com/file/d/10FGpWf8MfnBQcE_rZ3H3z3miZ0mwjsNq/view?usp=sharing" />
 <h2>Next steps of the project</h2>
 <h3>Use NGINX</h3>
