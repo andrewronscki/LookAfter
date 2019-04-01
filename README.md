@@ -23,7 +23,7 @@
 <h4>[] jquery</h4>
 <h4>[] popper.js</h4>
 <h4>[] react-fontawesome</h4>
-<h4>[] sweetalert</h4>
+<h4>[] sweetalert2</h4>
 <h3>Allowed to do on the frontend</h3>
 <h4>[] Navigate between pages using single page application</h4>
 <h4>[] In the Products tab they are listed</h4>
