@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import swal from 'sweetalert'
+import Swal from 'sweetalert2'
 
 class ModalAddProduct extends Component {
     constructor(props) {
@@ -28,8 +28,8 @@ class ModalAddProduct extends Component {
         }       
               
         await axios.post('http://localhost:3000/add', newProduct)
-            .then( res => swal('Isso aí!', 'Produto adicionado com sucesso.', 'success'))
-            .catch(swal('Erro!', 'Não foi possível adicionar produto.', 'error' ))
+            .then( res => Swal.fire('Isso aí!', 'Produto adicionado com sucesso.', 'success'))
+            .catch(err => Swal.fire('Erro!', 'Não foi possível adicionar produto.', 'error' ))
     }    
 
     render() {

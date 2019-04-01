@@ -12,7 +12,8 @@
     "react-fontawesome": "^1.6.1",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
-    "sweetalert": "^2.1.2"
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^8.8.0"
   },
   "scripts": {
     "start": "react-scripts start",

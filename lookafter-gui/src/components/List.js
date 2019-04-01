@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ModalEditProduct from './ModalEditProduct'
 import FontAwesome from 'react-fontawesome'
 import axios from 'axios'
-import swal from 'sweetalert'
+import Swal from 'sweetalert2'
 
 
 class List extends Component {
@@ -40,7 +40,22 @@ class List extends Component {
     tempbrochure[requiredItem] = item
     this.setState({ brochure: tempbrochure })
   }
-  
+  callDelete = (index) => {
+    Swal.fire({
+      title: 'Atenção!',
+      text: "Você tem certeza que quer deletar este produto?",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText:'Cancelar',
+      confirmButtonText: 'Sim, deletar produto'
+    }).then((result) => {
+      if (result.value) {
+        this.deleteItem(index)
+      }
+    })
+  }
   deleteItem = async (item, index) => {
     const deleteProduct = {
       disabled: true,
@@ -48,11 +63,13 @@ class List extends Component {
     }
 
     await axios.put('http://localhost:3000/delete', deleteProduct)
-      .then(res => swal('Isso aí!', 'Produto deletado com sucesso.', 'success'))
-      .catch(swal('Erro!', 'Não foi possível deletar produto.', 'error' ))
-    let tempBrochure = this.state.brochure
-    tempBrochure.splice(index, 1)
-    this.setState({ brochure: tempBrochure })
+      .then(res => {
+        Swal.fire('Isso aí!', 'Produto deletado com sucesso.', 'success')
+        let tempBrochure = this.state.brochure
+        tempBrochure.splice(index, 1)
+        this.setState({ brochure: tempBrochure })
+      })
+      .catch(err => Swal.fire('Erro!', 'Não foi possível deletar produto.', 'error' ))
   }
 
   buyItem = async (item, index) => {
@@ -62,8 +79,8 @@ class List extends Component {
       _id: this.state.brochure[item]._id
     }
     await axios.put('http://localhost:3000/buy', buyProduct)
-      .then(res => swal('Isso aí!', 'Produto comprado com sucesso.', 'success'))
-      .catch(swal('Erro!', 'Não foi possível comprar produto.', 'error' ))
+      .then(res => Swal.fire('Isso aí!', 'Produto comprado com sucesso.', 'success'))
+      .catch(err => Swal.fire('Erro!', 'Não foi possível comprar produto.', 'error' ))
   }
 
   render() {    
@@ -79,7 +96,7 @@ class List extends Component {
             <button className='btn btn-primary' onClick={() => this.loadProducts()}><FontAwesome name='retweet' /></button> {' '}
             <button className='btn btn-warning' data-toggle='modal' data-target='#editModal'
               onClick={() => this.replaceModalItem(index)}><FontAwesome name='edit' /></button> {' '}
-            <button className='btn btn-danger' onClick={() => this.deleteItem(index)}><FontAwesome name='trash' /></button>
+            <button className='btn btn-danger' onClick={() => this.callDelete(index)}><FontAwesome name='trash' /></button>
           </td>
         </tr>
       )
