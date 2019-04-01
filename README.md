@@ -39,4 +39,4 @@
 <h2>Next steps of the project</h2>
 <h3>Use NGINX</h3>
 <h2>My application is running</h2>
-<img src="/frontend/src/assets/img/myapp.gif" style="height: 800px;">
+<img src="/frontend/src/assets/img/myapp.gif">
