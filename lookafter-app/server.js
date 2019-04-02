@@ -97,7 +97,6 @@ app.put('/buy', (req, res) => {
                 const resultBought = bought + 1                 
                 existing.amount = resultAmount
                 existing.bought = resultBought
-
                 if(existing.firstDate == '') {
                     existing.firstDate = moment()
                 }else {
@@ -105,13 +104,11 @@ app.put('/buy', (req, res) => {
                     const first = existing.firstDate
                     const second = existing.secondDate
                     existing.resetStock = second.diff(first, 'minutes') * resultAmount    
-                }                  
-
+                }
                 nano.insert(existing, id, (err, body, header) => { 
                     if(!err) { 
                         res.writeHead(200, { 'Content-Type': 'text/plain' })
-                        res.end(JSON.stringify(body))
-                        
+                        res.end(JSON.stringify(body))                        
                     }else {
                         res.writeHead(500, { 'Content-Type': 'text/plain' })
                         res.end( 'Falha ao comprar produto. ' + err + '\n' )
