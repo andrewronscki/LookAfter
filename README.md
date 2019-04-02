@@ -6,7 +6,7 @@
 <h4>[] body-parser</h4>
 <h4>[] cors</h4>
 <h4>[] nano</h4>
-<h4>[] Moment</h4>
+<h4>[] moment</h4>
 <h3>Allowed functions in the backend</h3>
 <h4> [] Find products. </ h4>
 <h4> [] Create product. </ h4>
