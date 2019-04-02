@@ -4,6 +4,8 @@ const bodyParser = require('body-parser')
 const app = express()
 app.use(cors())
 const nano = require('nano')('http://andre:123456@localhost:5984').use('products')
+const moment = require('moment')
+moment.locale('pt-br')
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
@@ -95,6 +97,16 @@ app.put('/buy', (req, res) => {
                 const resultBought = bought + 1                 
                 existing.amount = resultAmount
                 existing.bought = resultBought
+
+                if(existing.firstDate == '') {
+                    existing.firstDate = moment()
+                }else {
+                    existing.secondDate = moment()
+                    const first = existing.firstDate
+                    const second = existing.secondDate
+                    existing.resetStock = second.diff(first, 'minutes') * resultAmount    
+                }                  
+
                 nano.insert(existing, id, (err, body, header) => { 
                     if(!err) { 
                         res.writeHead(200, { 'Content-Type': 'text/plain' })
@@ -109,5 +121,4 @@ app.put('/buy', (req, res) => {
         })
     })
 })
-
 

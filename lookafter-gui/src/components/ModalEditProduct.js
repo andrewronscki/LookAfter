@@ -21,7 +21,8 @@ class ModalEditProduct extends Component {
             description: nextProps.description,
             size: nextProps.size,
             amount: nextProps.amount,
-            _id: nextProps._id
+            _id: nextProps._id,
+            resetStock: nextProps.resetStock
         })
     }
 

@@ -78,8 +78,8 @@ class List extends Component {
     }
     await axios.put('http://localhost:3000/buy', buyProduct)
       .then(res => {
-          Swal.fire('Isso aí!', 'Produto comprado com sucesso.', 'success')
-          this.loadProducts()
+        Swal.fire('Isso aí!', 'Produto comprado com sucesso.', 'success')
+        this.loadProducts()          
         })
       .catch(err => Swal.fire('Erro!', 'Não foi possível comprar produto.', 'error' ))
   }
@@ -93,8 +93,8 @@ class List extends Component {
           <td>{item.description}</td>
           <td>{item.size}</td>
           <td>{item.amount}</td>
+          <td>{item.resetStock >= 1 ? `${item.resetStock} minutos`  : 'Sem parâmetros para cálculo'}</td>
           <td>
-            <button className='btn btn-primary' onClick={() => this.loadProducts()}><FontAwesome name='retweet' /></button> {' '}
             <button className='btn btn-warning' data-toggle='modal' data-target='#editModal'
               onClick={() => this.replaceModalItem(index)}><FontAwesome name='edit' /></button> {' '}
             <button className='btn btn-danger' onClick={() => this.callDelete(index)}><FontAwesome name='trash' /></button>
@@ -115,6 +115,7 @@ class List extends Component {
                 <th>Descrição</th>
                 <th>Tamanho</th>
                 <th>Quantidade</th>
+                <th>Estoque zera em</th>
                 <th>Editar/Deletar</th>
               </tr>
             </thead>
@@ -122,6 +123,9 @@ class List extends Component {
             {brochure}
           </tbody>
         </table>
+        <div>
+          <button className='btn btn-primary float-right' onClick={() => this.loadProducts()}><FontAwesome name='retweet'/> Atualizar Lista</button>
+        </div>
         {modalData && 
           <ModalEditProduct
             model={modalData.model}
@@ -129,6 +133,7 @@ class List extends Component {
             size={modalData.size}
             amount={modalData.amount}
             _id={modalData._id}
+            resetStock={modalData.resetStock}
             saveModalDetails={this.saveModalDetails}
           />
         }

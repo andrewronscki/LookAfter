@@ -25,11 +25,14 @@ class ModalAddProduct extends Component {
             size: this.state.size, 
             amount: parseInt(this.state.amount), 
             bought: 0, 
-            disabled: false
+            disabled: false,
+            firstDate: '',
+            secondDate: '',
+            resetStock: ''
         }       
               
         await axios.post('http://localhost:3000/add', newProduct)
-            .then( res => Swal.fire('Isso aí!', 'Produto adicionado com sucesso.', 'success'))
+            .then( res => Swal.fire('Isso aí!', 'Produto adicionado com sucesso. Clique no botão de Atualizar Lista para seu novo produto aparecer!', 'success'))
             .catch(err => Swal.fire('Erro!', 'Não foi possível adicionar produto.', 'error' ))
     }    
 
