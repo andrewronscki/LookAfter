@@ -26,7 +26,7 @@
 <h3>Allowed to do on the frontend</h3>
 <h4>[] Navigate between pages using single page application</h4>
 <h4>[] In the Products tab they are listed</h4>
-<h4>[] Allowed to create, edit, refresh list, delete and buy.</h4>
+<h4>[] Allowed to create, edit, refresh list, delete and buy product.</h4>
 <h3>Next steps</h3>
 <h4> [] When creating product list auto refresh. </ h4>
 <h2> Database </h2>
