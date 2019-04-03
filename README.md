@@ -34,15 +34,15 @@
 <h4><a href='http://couchdb.apache.org/' target='_blank'>http://couchdb.apache.org/</a></h4>
 <h3>After installing CouchDB, open the console and create the database with the following command:</h3>
 <h4>[] curl -X PUT http://127.0.0.1:5984/products</h4>
-<h3>check if you created the database</h3>
+<h3>Check if you created the database.</h3>
 <h4>[] curl -X GET http://127.0.0.1:5984/_all_dbs</h4>
-<h3>access the Project Fauxton</h3>
+<h3>Access the Project Fauxton.</h3>
 <h4>[] <a href='http://127.0.0.1:5984/_utils/#login' target='_blank'>http://127.0.0.1:5984/_utils/#login</a></h4>
 <h3>To make receive the values of the products a design document was created according to the image.</h3>
 <img src="/lookafter-gui/src/assets/img/mydoc.png">
 <h3>Create an admin user on:</h3>
 <h4>[] <a href='http://127.0.0.1:5984/_utils/#addAdmin/couchdb@localhost' target='_blank'>http://127.0.0.1:5984/_utils/#addAdmin/couchdb@localhost</a></h4>
-<h3>In the code you will have to make the connection with the database as image</h3>
+<h3>In the code you will have to make the connection with the database as image.</h3>
 <img src="/lookafter-gui/src/assets/img/adminCDB.png">
 <h2>Next steps of the project</h2>
 <h3>Use NGINX</h3>
